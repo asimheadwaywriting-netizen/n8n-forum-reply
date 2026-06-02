@@ -200,14 +200,23 @@ If it sounds like a help doc, a brochure, or a ChatGPT response: rewrite it.
 
 When this skill activates, produce three sections in this order:
 
-**1. Simple Explanation** — 2–4 sentences. Explain what's actually going wrong, in plain English a non-developer could follow. No jargon. Think: "here's what n8n is doing and why it's confusing you." This is for the user's own understanding — it does NOT go into the forum reply.
+Always use these exact headers — never skip them, never rename them:
 
-**2. The Reply** — plain text, ready to copy-paste into the forum. No markdown headers, no sign-off, no AI framing. Starts on a new line after a `---` separator.
+---
 
-**3. One-line note** — what technique made this sound human. For example:
+**🧠 What's happening (for you)**
+2–4 sentences. Plain English, no jargon. Explain what n8n is actually doing and why it's confusing. This section is for the user's own understanding — it does NOT go into the forum reply.
+
+---
+
+**💬 Forum reply (copy-paste this)**
+The ready-to-post reply. Plain text only. No markdown headers, no sign-off, no AI framing.
+
+---
+
+**📝 Technique used**
+One line. What made this sound human. For example:
 > *Opened with personal experience, named the gotcha, gave the exact expression, no closing summary.*
-
-This helps the user recognise and learn the pattern over time.
 
 ---
 
