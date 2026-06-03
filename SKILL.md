@@ -188,7 +188,7 @@ For deeper dives, these czlonkowski skills are already installed:
 
 Before posting, read the reply out loud.
 
-Would you say this to another developer at a meetup — casual, direct, specific?
+Could a grade seven student read this and understand what went wrong and what to do about it — without having to Google any of the words?
 
 If yes: post it.
 
@@ -211,6 +211,8 @@ Always use these exact headers — never skip them, never rename them:
 
 **💬 Forum reply (copy-paste this)**
 The ready-to-post reply. Plain text only. No markdown headers, no sign-off, no AI framing.
+
+Write so a grade seven student could follow along — no assumed knowledge, no jargon without explanation, short sentences. If you must use a technical term, define it in the same sentence. The goal is: someone with zero background reads this once and knows exactly what to do.
 
 ---
 
