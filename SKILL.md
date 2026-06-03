@@ -66,12 +66,12 @@ Always produce exactly these three sections in this order. Never skip or rename 
 ---
 
 **💬 Forum reply (copy-paste this)**
-Plain text only. No markdown headers. No sign-off. Write like a human who solved this problem themselves.
+Plain text only. No markdown headers. No sign-off. Write like a human in very simple terms who solved this problem themselves.
 
 ---
 
 **📝 Technique used**
-One line. What made it sound human.
+One line. What made it sound human and did you use the skill to give a real answer.
 
 ---
 
