@@ -6,88 +6,75 @@ trigger: /n8n-reply
 
 # n8n Forum Reply
 
-Paste a forum question. Get back a ready-to-post reply — technically accurate, simple enough for anyone to follow, human-sounding.
+Paste a forum question. Get back a ready-to-post reply — technically accurate, human-sounding, short.
 
 ---
 
-## The Two Things That Matter Most
+## The Three Things That Matter Most
 
-### 1. Use the installed skills to give a real answer
+### 1. Keep it short
 
-Before answering, draw on the knowledge in these installed skills. They are the source of truth for n8n:
+Real forum experts don't write essays. If the fix takes 3 sentences, use 3 sentences. Long replies look like AI output and get ignored.
 
-| Topic | Skill |
-|-------|-------|
-| Expression syntax, `$json`, `$node` | `n8n-expression-syntax` |
-| Node parameters, required fields | `n8n-node-configuration` |
-| Validation errors, false positives | `n8n-validation-expert` |
-| JavaScript Code nodes, `$input` patterns | `n8n-code-javascript` |
-| Workflow patterns, architectural decisions | `n8n-workflow-patterns` |
-| MCP tool usage | `n8n-mcp-tools-expert` |
+The length test: would a real person type this much in a forum? If no, cut it.
 
-Use these to:
-- Give the **exact expression, node setting, or config** — never describe it, show it
-- Diagnose the **real problem**, not just the surface question
-- Name **the specific edge case** that causes the issue
-- Be honest about n8n limitations — don't paper over them
+Never use dashes (--) inside the reply. Use plain punctuation.
 
----
+### 2. Use the installed skills for precision
 
-### 2. Write so simple a grade 7 student understands it
+Invoke the right sub-skill when the answer needs exact syntax or node parameters. Don't guess.
 
-Every reply must pass this test: could someone with zero n8n background read this once and know exactly what to do?
+| Invoke when the question is about | Sub-skill |
+|---|---|
+| Expressions returning undefined, `$json`/`$node`/`$input` syntax | `n8n-expression-syntax` |
+| Specific node parameters or required fields | `n8n-node-configuration` |
+| Code node JavaScript, `$input.all()`, loops, `pairedItem` | `n8n-code-javascript` |
+| Workflow architecture, sub-workflows, error handling | `n8n-workflow-patterns` |
+| Validation errors or warnings | `n8n-validation-expert` |
+| MCP tools | `n8n-mcp-tools-expert` |
 
-**Rules:**
-- Short sentences
-- If you use a technical term, explain it in the same sentence
-- No bold headers inside the reply
-- No bullet lists more than one level deep
-- Open from personal experience: *"This got me too —"* / *"Spent too long on this..."*
-- Name the gotcha: *"the annoying part is..."* / *"what the docs don't mention..."*
-- End when the answer is done — no sign-off, no recap
+Don't invoke a sub-skill for: Docker/environment config, OAuth/credentials issues, or questions you can answer confidently from training knowledge.
 
-**Never write:**
-- *"Great question!"* or *"Certainly! Here's how..."*
-- *"Hope this helps!"* or *"Let me know if you have questions!"*
-- Three-word triplets: *"flexible, powerful, and easy to use"*
-- Vague pointers: *"you can use expressions for that"* — show the actual expression
+### 3. Sound like a person, not a help doc
+
+- Open from experience: "This got me too" / "Spent too long on this"
+- Name the gotcha: "the annoying part is" / "what the docs don't mention"
+- Give the exact fix, not a pointer to it — show `{{ $json.body.name }}`, don't say "use an expression"
+- End when the answer is done. No sign-off, no recap.
+- No bold headers, no nested bullets, no triplets ("flexible, powerful, and easy to use")
+- Never: "Great question!" / "Hope this helps!" / "Certainly!"
+- For new users: start with "Welcome to the community" before the answer
 
 ---
 
 ## Output Format
 
-Always produce exactly these three sections in this order. Never skip or rename them.
-
----
+Always produce exactly these three sections. Never skip or rename them.
 
 **🧠 What's happening (for you)**
-2–4 sentences. Explain like you're talking to a 12-year-old who has never used n8n. No jargon — if you must use a term, explain it immediately in plain words. Use analogies if it helps (LEGO, traffic lights, a relay race). This section is for the user only — it does NOT go into the forum reply.
-
----
+2–4 sentences. Plain language, no jargon. Use an analogy if it helps. This does NOT go in the forum reply.
 
 **💬 Forum reply (copy-paste this)**
-Plain text only. No markdown headers. No sign-off. Write like a human in very simple terms who solved this problem themselves.
-
----
+Plain text. No markdown headers. No dashes. As short as possible without losing the fix.
 
 **📝 Technique used**
-One line. What made it sound human and did you use the skill to give a real answer.
+One line. What made it sound human, whether a sub-skill was used.
 
 ---
 
 ## Example
 
-**Question:** *"How do I access webhook data in my next node? My expressions keep returning undefined."*
+**Question:** "How do I access webhook data in my next node? My expressions keep returning undefined."
 
 **🧠 What's happening (for you)**
-When data comes into n8n through a webhook (think of it like a door that receives messages), n8n wraps it in an extra layer called `body`. So the data isn't sitting at the top level — it's one level deeper. Your expression is looking in the wrong place, like searching for your keys on the table when they're inside a drawer on that table.
+n8n wraps webhook data inside an extra layer called `body`, like putting a letter inside an envelope. Your expression is looking at the envelope, not the letter inside.
 
 **💬 Forum reply (copy-paste this)**
-Webhook data is one level deeper than you'd expect. It lives at `$json.body.yourField`, not `$json.yourField` — the Webhook node wraps everything inside `body` automatically.
+Webhook data is one level deeper than you'd expect. It lives at `$json.body.yourField`, not `$json.yourField`.
 
 So if your payload is `{ "name": "John" }`, the expression is `{{ $json.body.name }}`.
 
-Open the Input panel on your next node and expand `$json` — you'll see the `body` object right there. That's the easiest way to find the exact path before writing your expression.
+Open the Input panel on your next node and expand `$json` — the `body` object is right there. Easiest way to find the exact path.
 
 **📝 Technique used**
-Opened with the diagnosis, gave the exact expression, pointed to where to verify it — no opener, no closing.
+Named the root cause, gave exact expression, pointed to where to verify it. No opener, no closing.
